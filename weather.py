@@ -148,7 +148,10 @@ def main():
             ]
             return [c for c in CITY_MAP if c in busan_districts]
         elif metro == '인천':
-            return [c for c in CITY_MAP if c.endswith('구') and 'Incheon' in CITY_MAP[c] or c == '인천']
+            incheon_districts = [
+                '중구', '동구', '미추홀구', '연수구', '남동구', '부평구', '계양구', '서구', '강화군', '옹진군'
+            ]
+            return [c for c in CITY_MAP if c in incheon_districts]
         elif metro == '대전':
             return [c for c in CITY_MAP if c.endswith('구') and 'Daejeon' in CITY_MAP[c] or c == '대전']
         elif metro == '대구':
