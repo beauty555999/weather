@@ -35,11 +35,11 @@ CITY_MAP = {
     '양평군': 'Yangpyeong-gun,KR',
     # 울산 주요 구
     '중구': 'Jung-gu,KR',
-    '남구': 'Nam-gu,KR',
-    '동구': 'Dong-gu,KR',
-    '북구': 'Buk-gu,KR',
-    '울주군': 'Ulju-gun,KR',
-    # 광주 주요 구
+        '중구(울산)': 'Jung-gu,KR',
+        '남구(울산)': 'Nam-gu,KR',
+        '동구(울산)': 'Dong-gu,KR',
+        '북구(울산)': 'Buk-gu,KR',
+        '울주군': 'Ulju-gun,KR',
     '동구': 'Dong-gu,KR',
     '서구': 'Seo-gu,KR',
     '남구': 'Nam-gu,KR',
@@ -47,11 +47,14 @@ CITY_MAP = {
     '광산구': 'Gwangsan-gu,KR',
     # 대구 주요 구
     '중구': 'Jung-gu,KR',
-    '동구': 'Dong-gu,KR',
-    '서구': 'Seo-gu,KR',
-    '남구': 'Nam-gu,KR',
-    '북구': 'Buk-gu,KR',
-    '수성구': 'Suseong-gu,KR',
+        '중구(대구)': 'Jung-gu,KR',
+        '동구(대구)': 'Dong-gu,KR',
+        '서구(대구)': 'Seo-gu,KR',
+        '남구(대구)': 'Nam-gu,KR',
+        '북구(대구)': 'Buk-gu,KR',
+        '수성구': 'Suseong-gu,KR',
+        '달서구': 'Dalseo-gu,KR',
+        '달성군': 'Dalseong-gun,KR',
     '달서구': 'Dalseo-gu,KR',
     '달성군': 'Dalseong-gun,KR',
     # 대전 주요 구
@@ -59,16 +62,32 @@ CITY_MAP = {
     '중구': 'Jung-gu,KR',
     '서구': 'Seo-gu,KR',
     '유성구': 'Yuseong-gu,KR',
-    '대덕구': 'Daedeok-gu,KR',
-    # 인천 주요 시군구
-    '중구': 'Jung-gu,KR',
-    '동구': 'Dong-gu,KR',
-    '미추홀구': 'Michuhol-gu,KR',
-    '연수구': 'Yeonsu-gu,KR',
-    '남동구': 'Namdong-gu,KR',
-    '부평구': 'Bupyeong-gu,KR',
-    '계양구': 'Gyeyang-gu,KR',
-    '서구': 'Seo-gu,KR',
+        '중구(인천)': 'Jung-gu,KR',
+        '동구(인천)': 'Dong-gu,KR',
+        '미추홀구': 'Michuhol-gu,KR',
+        '연수구': 'Yeonsu-gu,KR',
+        '남동구': 'Namdong-gu,KR',
+        '부평구': 'Bupyeong-gu,KR',
+        '계양구': 'Gyeyang-gu,KR',
+        '서구(인천)': 'Seo-gu,KR',
+        '강화군': 'Ganghwa-gun,KR',
+        '옹진군': 'Ongjin-gun,KR',
+        '서울': 'Seoul,KR',
+        '인천': 'Incheon,KR',
+        '대전': 'Daejeon,KR',
+        '대구': 'Daegu,KR',
+        '광주': 'Gwangju,KR',
+        '부산': 'Busan,KR',
+        '울산': 'Ulsan,KR',
+        '세종': 'Sejong,KR',
+        '수원': 'Suwon-si,KR',
+        '고양': 'Goyang-si,KR',
+        '성남': 'Seongnam-si,KR',
+        '부천': 'Bucheon-si,KR',
+        '의정부': 'Uijeongbu-si,KR',
+        '남양주': 'Namyangju-si,KR',
+        '안산': 'Ansan-si,KR',
+        '기장군': 'Gijang-gun,KR',
     '강화군': 'Ganghwa-gun,KR',
     '옹진군': 'Ongjin-gun,KR',
     '서울': 'Seoul,KR',
@@ -208,7 +227,12 @@ def main():
     # 각 광역시별 시군구만 분류
     def get_districts(metro):
         if metro == '서울':
-            return [c for c in CITY_MAP if c.endswith('구') and c != '수영구' and c != '동구']
+            seoul_districts = [
+                '종로구', '중구', '용산구', '성동구', '광진구', '동대문구', '중랑구', '성북구', '강북구', '도봉구', '노원구',
+                '은평구', '서대문구', '마포구', '양천구', '강서구', '구로구', '금천구', '영등포구', '동작구', '관악구',
+                '서초구', '강남구', '송파구', '강동구'
+            ]
+            return [c for c in CITY_MAP if c in seoul_districts]
         elif metro == '부산':
             busan_districts = [
                 '중구', '서구', '동구', '영도구', '부산진구', '동래구', '남구', '북구', '해운대구', '사하구', '금정구', '강서구', '연제구', '수영구', '사상구', '기장군'
@@ -240,7 +264,12 @@ def main():
             ]
             return [c for c in CITY_MAP if c in ulsan_districts]
         elif metro == '경기도':
-            return [c for c in CITY_MAP if c not in ['서울', '인천', '대전', '대구', '광주', '부산', '울산', '세종', '강원도', '경기도']]
+            gyeonggi_districts = [
+                '수원시', '고양시', '성남시', '부천시', '의정부시', '남양주시', '안산시', '안양시', '평택시', '파주시', '시흥시', '김포시',
+                '광명시', '군포시', '이천시', '오산시', '하남시', '용인시', '구리시', '동두천시', '과천시', '양주시', '안성시', '포천시',
+                '여주시', '연천군', '가평군', '양평군'
+            ]
+            return [c for c in CITY_MAP if c in gyeonggi_districts]
         else:
             return [metro]
     metros = ['서울', '부산', '인천', '대전', '대구', '광주', '울산', '경기도']
