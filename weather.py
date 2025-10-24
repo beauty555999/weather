@@ -4,6 +4,47 @@ import streamlit as st
 import os
 
 CITY_MAP = {
+    # 경기도 주요 시군
+    '수원시': 'Suwon-si,KR',
+    '고양시': 'Goyang-si,KR',
+    '성남시': 'Seongnam-si,KR',
+    '부천시': 'Bucheon-si,KR',
+    '의정부시': 'Uijeongbu-si,KR',
+    '남양주시': 'Namyangju-si,KR',
+    '안산시': 'Ansan-si,KR',
+    '안양시': 'Anyang-si,KR',
+    '평택시': 'Pyeongtaek-si,KR',
+    '파주시': 'Paju-si,KR',
+    '시흥시': 'Siheung-si,KR',
+    '김포시': 'Gimpo-si,KR',
+    '광명시': 'Gwangmyeong-si,KR',
+    '군포시': 'Gunpo-si,KR',
+    '이천시': 'Icheon-si,KR',
+    '오산시': 'Osan-si,KR',
+    '하남시': 'Hanam-si,KR',
+    '용인시': 'Yongin-si,KR',
+    '구리시': 'Guri-si,KR',
+    '동두천시': 'Dongducheon-si,KR',
+    '과천시': 'Gwacheon-si,KR',
+    '양주시': 'Yangju-si,KR',
+    '안성시': 'Anseong-si,KR',
+    '포천시': 'Pocheon-si,KR',
+    '여주시': 'Yeoju-si,KR',
+    '연천군': 'Yeoncheon-gun,KR',
+    '가평군': 'Gapyeong-gun,KR',
+    '양평군': 'Yangpyeong-gun,KR',
+    # 울산 주요 구
+    '중구': 'Jung-gu,KR',
+    '남구': 'Nam-gu,KR',
+    '동구': 'Dong-gu,KR',
+    '북구': 'Buk-gu,KR',
+    '울주군': 'Ulju-gun,KR',
+    # 광주 주요 구
+    '동구': 'Dong-gu,KR',
+    '서구': 'Seo-gu,KR',
+    '남구': 'Nam-gu,KR',
+    '북구': 'Buk-gu,KR',
+    '광산구': 'Gwangsan-gu,KR',
     # 대구 주요 구
     '중구': 'Jung-gu,KR',
     '동구': 'Dong-gu,KR',
@@ -189,9 +230,15 @@ def main():
             ]
             return [c for c in CITY_MAP if c in daegu_districts]
         elif metro == '광주':
-            return [c for c in CITY_MAP if c.endswith('구') and 'Gwangju' in CITY_MAP[c] or c == '광주']
+            gwangju_districts = [
+                '동구', '서구', '남구', '북구', '광산구'
+            ]
+            return [c for c in CITY_MAP if c in gwangju_districts]
         elif metro == '울산':
-            return [c for c in CITY_MAP if c.endswith('구') and 'Ulsan' in CITY_MAP[c] or c == '울산']
+            ulsan_districts = [
+                '중구', '남구', '동구', '북구', '울주군'
+            ]
+            return [c for c in CITY_MAP if c in ulsan_districts]
         elif metro == '경기도':
             return [c for c in CITY_MAP if c not in ['서울', '인천', '대전', '대구', '광주', '부산', '울산', '세종', '강원도', '경기도']]
         else:
