@@ -160,27 +160,13 @@ def main():
             return [metro]
     metros = ['서울', '부산', '인천', '대전', '대구', '광주', '울산', '경기도']
     metro_choice = st.selectbox(
-        "광역시/도(행정구역)를 선택하세요",
+        "선택_광역시/도(행정구역)",
         options=metros,
         index=0
     )
     district_options = get_districts(metro_choice)
     district_list = st.multiselect(
-        f"{metro_choice} 내 시군구를 선택하세요 (복수 선택 가능)",
-        options=district_options,
-        default=[]
-    )
-    if not district_list:
-        st.info("시군구를 선택하면 날씨와 5일 예보가 표시됩니다.")
-        return
-    metro_choice = st.selectbox(
-        "광역시/도(행정구역)를 선택하세요",
-        options=metros,
-        index=0
-    )
-    district_options = get_districts(metro_choice)
-    district_list = st.multiselect(
-        f"{metro_choice} 내 시군구를 선택하세요 (복수 선택 가능)",
+        f"선택_{metro_choice}_시군구 (복수 선택 가능)",
         options=district_options,
         default=[]
     )
