@@ -141,9 +141,12 @@ def main():
     # 각 광역시별 시군구만 분류
     def get_districts(metro):
         if metro == '서울':
-            return [c for c in CITY_MAP if c.endswith('구') or c == '서울']
+            return [c for c in CITY_MAP if c.endswith('구') and c != '수영구' and c != '동구']
         elif metro == '부산':
-            return [c for c in CITY_MAP if c.endswith('구') and '부산' in CITY_MAP[c] or c == '부산']
+            busan_districts = [
+                '중구', '서구', '동구', '영도구', '부산진구', '동래구', '남구', '북구', '해운대구', '사하구', '금정구', '강서구', '연제구', '수영구', '사상구', '기장군'
+            ]
+            return [c for c in CITY_MAP if c in busan_districts]
         elif metro == '인천':
             return [c for c in CITY_MAP if c.endswith('구') and 'Incheon' in CITY_MAP[c] or c == '인천']
         elif metro == '대전':
@@ -191,10 +194,15 @@ def main():
                 st.subheader(f'[{city_kr}] 5일치 주간 날씨')
                 # 한 줄에 모든 날씨 정보와 아이콘을 깔끔하게 표시
                 cols = st.columns(len(forecast))
+                import datetime
+                weekday_names = ['월', '화', '수', '목', '금', '토', '일']
                 for idx, day in enumerate(forecast):
                     with cols[idx]:
                         st.image(f"http://openweathermap.org/img/wn/{day['icon']}@2x.png", width=48)
-                        st.write(f"{day['date']}\n{day['weather']}\n{day['temp']}°C")
+                        date_obj = datetime.datetime.strptime(day['date'], "%Y-%m-%d")
+                        # Python의 weekday()는 월=0, 일=6이므로, 한국식 요일로 변환
+                        weekday = weekday_names[date_obj.weekday()]
+                        st.write(f"{day['date']} ({weekday}요일)\n{day['weather']}\n{day['temp']}°C")
             else:
                 st.error(f_error)
         else:
