@@ -4,6 +4,23 @@ import streamlit as st
 import os
 
 CITY_MAP = {
+    # 대전 주요 구
+    '동구': 'Dong-gu,KR',
+    '중구': 'Jung-gu,KR',
+    '서구': 'Seo-gu,KR',
+    '유성구': 'Yuseong-gu,KR',
+    '대덕구': 'Daedeok-gu,KR',
+    # 인천 주요 시군구
+    '중구': 'Jung-gu,KR',
+    '동구': 'Dong-gu,KR',
+    '미추홀구': 'Michuhol-gu,KR',
+    '연수구': 'Yeonsu-gu,KR',
+    '남동구': 'Namdong-gu,KR',
+    '부평구': 'Bupyeong-gu,KR',
+    '계양구': 'Gyeyang-gu,KR',
+    '서구': 'Seo-gu,KR',
+    '강화군': 'Ganghwa-gun,KR',
+    '옹진군': 'Ongjin-gun,KR',
     '서울': 'Seoul,KR',
     '인천': 'Incheon,KR',
     '대전': 'Daejeon,KR',
@@ -153,7 +170,10 @@ def main():
             ]
             return [c for c in CITY_MAP if c in incheon_districts]
         elif metro == '대전':
-            return [c for c in CITY_MAP if c.endswith('구') and 'Daejeon' in CITY_MAP[c] or c == '대전']
+            daejeon_districts = [
+                '동구', '중구', '서구', '유성구', '대덕구'
+            ]
+            return [c for c in CITY_MAP if c in daejeon_districts]
         elif metro == '대구':
             return [c for c in CITY_MAP if c.endswith('구') and 'Daegu' in CITY_MAP[c] or c == '대구']
         elif metro == '광주':
