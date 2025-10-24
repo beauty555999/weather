@@ -63,32 +63,7 @@ CITY_MAP = {
 }
 
 
-        # 서울 주요 시군구
-        ,'종로구': 'Jongno-gu,KR'
-        ,'영등포구': 'Yeongdeungpo-gu,KR'
-        ,'강남구': 'Gangnam-gu,KR'
-        ,'송파구': 'Songpa-gu,KR'
-        ,'마포구': 'Mapo-gu,KR'
-        ,'서초구': 'Seocho-gu,KR'
-        ,'중구': 'Jung-gu,KR'
-        ,'동대문구': 'Dongdaemun-gu,KR'
-        ,'성동구': 'Seongdong-gu,KR'
-        ,'성북구': 'Seongbuk-gu,KR'
-        ,'은평구': 'Eunpyeong-gu,KR'
-        ,'강서구': 'Gangseo-gu,KR'
-        ,'노원구': 'Nowon-gu,KR'
-        ,'관악구': 'Gwanak-gu,KR'
-        ,'동작구': 'Dongjak-gu,KR'
-        ,'서대문구': 'Seodaemun-gu,KR'
-        ,'강동구': 'Gangdong-gu,KR'
-        ,'중랑구': 'Jungnang-gu,KR'
-        ,'광진구': 'Gwangjin-gu,KR'
-        ,'양천구': 'Yangcheon-gu,KR'
-        ,'도봉구': 'Dobong-gu,KR'
-        ,'강북구': 'Gangbuk-gu,KR'
-        ,'구로구': 'Guro-gu,KR'
-        ,'금천구': 'Geumcheon-gu,KR'
-        ,'용산구': 'Yongsan-gu,KR'
+    # (중복 및 잘못된 들여쓰기 구역 삭제)
 load_dotenv()
 API_KEY = os.environ.get('OPENWEATHER_API_KEY')
 BASE_URL = 'https://api.openweathermap.org/data/2.5/weather'
