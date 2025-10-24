@@ -2,7 +2,6 @@
 import requests
 import streamlit as st
 import os
-from dotenv import load_dotenv
 
 CITY_MAP = {
     '서울': 'Seoul,KR',
@@ -64,7 +63,6 @@ CITY_MAP = {
 
 
     # (중복 및 잘못된 들여쓰기 구역 삭제)
-load_dotenv()
 API_KEY = os.environ.get('OPENWEATHER_API_KEY')
 BASE_URL = 'https://api.openweathermap.org/data/2.5/weather'
 FORECAST_URL = 'https://api.openweathermap.org/data/2.5/forecast'
